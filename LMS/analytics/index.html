@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .full {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📊 Teacher Analytics Dashboard</h1>
+
+<div class="dashboard">
+
+    <!-- Pie Chart -->
+    <div class="card">
+        <h3>🥧 Submission Ratio</h3>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <!-- Bar Chart -->
+    <div class="card">
+        <h3>📊 Marks Comparison</h3>
+        <canvas id="barChart"></canvas>
+    </div>
+
+    <!-- Line Chart -->
+    <div class="card full">
+        <h3>📈 Course Performance</h3>
+        <canvas id="lineChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+/* ================= PIE CHART ================= */
+new Chart(document.getElementById("pieChart"), {
+    type: "pie",
+    data: {
+        labels: ["Submitted", "Not Submitted"],
+        datasets: [{
+            data: [50, 10],
+            backgroundColor: ["#4CAF50", "#F44336"]
+        }]
+    }
+});
+
+/* ================= BAR CHART ================= */
+new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+        labels: ["Kasun", "Nimal", "Saman", "Ravi", "Amal"],
+        datasets: [{
+            label: "Marks",
+            data: [85, 72, 90, 60, 78],
+            backgroundColor: "#2196F3"
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+
+/* ================= LINE CHART ================= */
+new Chart(document.getElementById("lineChart"), {
+    type: "line",
+    data: {
+        labels: ["Assignment 1", "Assignment 2", "Assignment 3", "Assignment 4"],
+        datasets: [{
+            label: "Average Marks",
+            data: [70, 75, 82, 88],
+            borderColor: "#FF9800",
+            fill: false,
+            tension: 0.3
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
